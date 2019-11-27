@@ -20,7 +20,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/cyjme/gen/cmd/file"
+	"gen/cmd/file"
 	"github.com/spf13/cobra"
 )
 

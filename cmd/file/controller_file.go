@@ -48,6 +48,7 @@ package controller
 import (
 	"{{projectName}}/model"
 	"{{projectName}}/pkg"
+	"{{projectName}}/pkg/e"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -70,11 +71,12 @@ func (ctl *{{ModelName}}Controller) Create(c *gin.Context) {
 	}
 
 	if err := {{modelName}}.Insert(); err != nil {
-		c.JSON(http.StatusBadGateway, err)
+		logging.Error("Create {{ModelName}}", err)
+		app.RespJson(c, e.ERROR, nil)
 		return
 	}
 
-	c.JSON(http.StatusOK, {{modelName}})
+	app.RespJson(c, e.SUCCESS, {{modelName}})
 }
 
 // @Summary  Delete
@@ -88,11 +90,12 @@ func (ctl *{{ModelName}}Controller) Delete(c *gin.Context) {
 	err := {{modelName}}.Delete()
 
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, err.Error())
+		logging.Error("Delete {{ModelName}}", err)
+		app.RespJson(c, e.ERROR, nil)
 		return
 	}
 
-	c.JSON(http.StatusOK, nil)
+	app.RespJson(c, e.SUCCESS, nil)
 }
 
 // @Summary Put
@@ -111,11 +114,12 @@ func (ctl *{{ModelName}}Controller) Put(c *gin.Context) {
 
 	err := {{modelName}}.Update()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, err.Error())
+		logging.Error("Put {{ModelName}}", err)
+		app.RespJson(c, e.ERROR, nil)
 		return
 	}
 
-	c.JSON(http.StatusOK, nil)
+	app.RespJson(c, e.SUCCESS, nil)
 }
 
 // @Summary Patch
@@ -134,11 +138,12 @@ func (ctl *{{ModelName}}Controller) Patch(c *gin.Context) {
 
 	err := {{modelName}}.Patch()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, err.Error())
+		logging.Error("Patch {{ModelName}}", err)
+		app.RespJson(c, e.ERROR, nil)
 		return
 	}
 
-	c.JSON(http.StatusOK, nil)
+	app.RespJson(c, e.SUCCESS, nil)
 }
 
 // @Summary List
@@ -171,13 +176,13 @@ func (ctl *{{ModelName}}Controller) List(c *gin.Context) {
 
 	{{modelName}}s, total, err := {{modelName}}.List(rawQuery, rawOrder, offset, limit)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, err.Error())
+		logging.Error("List {{ModelName}}", err)
+		app.RespJson(c, e.ERROR, nil)
 		return
 	}
-
-	c.JSON(http.StatusOK, gin.H{
+	app.RespJson(c, http.StatusOK, gin.H{
 		"total": total,
-		"data": {{modelName}}s,
+		"list": {{modelName}}s,
 	})
 }
 
@@ -193,11 +198,12 @@ func (ctl *{{ModelName}}Controller) Get(c *gin.Context) {
 
 	{{modelName}}, err := {{modelName}}.Get()
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, err.Error())
+		logging.Error("Get {{ModelName}}", err)
+		app.RespJson(c, e.ERROR, nil)
 		return
 	}
 
-	c.JSON(http.StatusOK, {{modelName}})
+	app.RespJson(c, http.StatusOK, {{modelName}})
 }
 `
 }
