@@ -4,8 +4,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cyjme/gen/cmd/vars"
-	"github.com/cyjme/gen/util"
+	"github.com/sevenMonkey/gen/cmd/vars"
+	"github.com/sevenMonkey/gen/util"
 )
 
 type ControllerFile struct {

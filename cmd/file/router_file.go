@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cyjme/gen/util"
+	"github.com/sevenMonkey/gen/util"
 )
 
 type RouterFile struct {

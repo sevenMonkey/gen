@@ -9,7 +9,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"gen/util"
+	"github.com/sevenMonkey/gen/util"
 
 	"github.com/spf13/cobra"
 )

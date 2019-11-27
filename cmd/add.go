@@ -19,7 +19,7 @@ import (
 	"os"
 	"strings"
 
-	"gen/cmd/vars"
+	"github.com/sevenMonkey/gen/cmd/vars"
 	"github.com/spf13/cobra"
 )
 
