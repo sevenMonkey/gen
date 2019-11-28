@@ -62,8 +62,8 @@ func (m *ControllerIoFile) Generate() {
 	}
 	m.Tpl = strings.Replace(m.Tpl, "{{ModelName}}", m.ModelName, -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{createStruct}}", structText, -1)
-	m.Tpl = strings.Replace(m.Tpl, "{{patchName}}", structText, -1)
-	m.Tpl = strings.Replace(m.Tpl, "{{updateName}}", updateText, -1)
+	m.Tpl = strings.Replace(m.Tpl, "{{patchStruct}}", structText, -1)
+	m.Tpl = strings.Replace(m.Tpl, "{{updateStruct}}", updateText, -1)
 
 }
 
