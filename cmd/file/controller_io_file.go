@@ -19,7 +19,7 @@ func NewControllerIoFile(modelName string, fields []string) *ControllerIoFile {
 	ioFile.ModelName = modelName
 	ioFile.Fields = fields
 
-	ioFile.Tpl = getDefaultControllerTpl()
+	ioFile.Tpl = getDefaultControllerIoTpl()
 
 	return &ioFile
 }
@@ -60,7 +60,7 @@ func (m *ControllerIoFile) Generate() {
 		updateText += `
 `
 	}
-
+	m.Tpl = strings.Replace(m.Tpl, "{{ModelName}}", m.ModelName, -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{createStruct}}", structText, -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{patchName}}", structText, -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{updateName}}", updateText, -1)
