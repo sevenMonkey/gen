@@ -49,6 +49,7 @@ import (
 	"{{projectName}}/model"
 	"{{projectName}}/pkg"
 	"{{projectName}}/app/logging"
+	"{{projectName}}/app"
 	"{{projectName}}/pkg/e"
 	"github.com/gin-gonic/gin"
 	"net/http"
