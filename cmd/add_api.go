@@ -36,6 +36,9 @@ var apiCmd = &cobra.Command{
 		migrateFile := file.NewMigrateFile(modelFlags.name)
 		migrateFile.Write()
 
+		controllerIoFile := file.NewControllerIoFile(modelFlags.name, modelFlags.fields)
+		controllerIoFile.Write()
+
 		controllerFile := file.NewControllerFile(modelFlags.name)
 		controllerFile.Write()
 

@@ -61,7 +61,7 @@ type {{ModelName}}Controller struct {
 
 // @Summary Create
 // @Tags    {{ModelName}}
-// @Param body body model.{{ModelName}} true "{{ModelName}}"
+// @Param body body create{{ModelName}} true "create{{ModelName}}"
 // @Success 200 {string} json ""
 // @Router /{{modelName}}s [post]
 func (ctl *{{ModelName}}Controller) Create(c *gin.Context) {
@@ -102,7 +102,7 @@ func (ctl *{{ModelName}}Controller) Delete(c *gin.Context) {
 
 // @Summary Put
 // @Tags    {{ModelName}}
-// @Param body body model.{{ModelName}} true "{{modelName}}"
+// @Param body body put{{ModelName}} true "put{{modelName}}"
 // @Param  {{modelName}}Id path string true "{{modelName}}Id"
 // @Success 200 {string} json ""
 // @Router /{{modelName}}s/{{{modelName}}Id} [put]
@@ -126,7 +126,7 @@ func (ctl *{{ModelName}}Controller) Put(c *gin.Context) {
 
 // @Summary Patch
 // @Tags    {{ModelName}}
-// @Param body body model.{{ModelName}} true "{{modelName}}"
+// @Param body body patch{{ModelName}} true "patch{{modelName}}"
 // @Param  {{modelName}}Id path string true "{{modelName}}Id"
 // @Success 200 {string} json ""
 // @Router /{{modelName}}s/{{{modelName}}Id} [patch]
