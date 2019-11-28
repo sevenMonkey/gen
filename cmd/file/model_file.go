@@ -69,6 +69,7 @@ package model
 
 import (
 	"{{projectName}}/app"
+	"github.com/jinzhu/gorm"
 )
 
 type {{ModelName}} struct {
@@ -119,13 +120,18 @@ func ({{modelName}} *{{ModelName}}) List(rawQuery string, rawOrder string, offse
 		Count(&total)
 
 	err = db.Error
+	if err == gorm.ErrRecordNotFound{
+		return &{{modelName}}s, 0, nil
+	}
 
 	return &{{modelName}}s, total, err
 }
 
 func ({{modelName}} *{{ModelName}}) Get() (*{{ModelName}}, error) {
 	err := app.DB.Find(&{{modelName}}).Error
-
+	if err == gorm.ErrRecordNotFound{
+		return {{modelName}}, nil 
+	}
 	return {{modelName}}, err
 }
 
