@@ -50,7 +50,7 @@ func (m *ControllerIoFile) Generate() {
 `
 	}
 
-	upFields := append([]string{"id", "string"}, m.Fields...)
+	upFields := append([]string{"id:string"}, m.Fields...)
 	for _, field := range upFields {
 		fieldSplit := strings.Split(field, ":")
 		fieldName := fieldSplit[0]
