@@ -60,7 +60,7 @@ func (m *ControllerIoFile) Generate() {
 		updateText += `
 `
 	}
-	m.Tpl = strings.Replace(m.Tpl, "{{ModelName}}", m.ModelName, -1)
+	m.Tpl = strings.Replace(m.Tpl, "{{ModelName}}", strings.Title(m.ModelName), -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{createStruct}}", structText, -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{patchStruct}}", structText, -1)
 	m.Tpl = strings.Replace(m.Tpl, "{{updateStruct}}", updateText, -1)
