@@ -53,7 +53,7 @@ func getDefaultRouterTpl() string {
 		{{modelName}}Group.GET("", {{modelName}}Controller.List)
 		{{modelName}}Group.POST("", {{modelName}}Controller.Create)
 		{{modelName}}Group.DELETE("/:{{modelName}}Id", {{modelName}}Controller.Delete)
-		{{modelName}}Group.PUT("/:{{modelName}}Id", {{modelName}}Controller.Put)
+		//{{modelName}}Group.PUT("/:{{modelName}}Id", {{modelName}}Controller.Put)
 		{{modelName}}Group.GET("/:{{modelName}}Id", {{modelName}}Controller.Get)
 		{{modelName}}Group.PATCH("/:{{modelName}}Id", {{modelName}}Controller.Patch)
 	}
