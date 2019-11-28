@@ -74,7 +74,7 @@ package controller
 		{{createStruct}}
     }
 
-	type update{{ModelName}} struct{
+	type put{{ModelName}} struct{
 		{{updateStruct}}
 	}
 
