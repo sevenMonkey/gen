@@ -51,6 +51,7 @@ import (
 	"{{projectName}}/app/logging"
 	"{{projectName}}/app"
 	"{{projectName}}/pkg/e"
+    "{{projectName}}/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
