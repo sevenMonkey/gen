@@ -103,39 +103,39 @@ func (ctl *{{ModelName}}Controller) Delete(c *gin.Context) {
 	app.RespJson(c, e.SUCCESS, nil)
 }
 
-// @Summary Put
-// @Tags    {{ModelName}}
-// @Param body body controller.put{{ModelName}} true "put{{modelName}}"
-// @Param  {{modelName}}Id path string true "{{modelName}}Id"
-// @Success 200 {string} json ""
-// @Router /{{modelName}}s/{{{modelName}}Id} [put]
-func (ctl *{{ModelName}}Controller) Put(c *gin.Context) {
-	{{modelName}} := model.{{ModelName}}{}
-	{{modelName}}.Id = c.Param("{{modelName}}Id")
-	req := put{{ModelName}}{} 
-
-	if err := pkg.ParseRequest(c, &req); err != nil {
-		return
-	}
-
-	if err := util.StructCopy(&{{modelName}}, &req); err != nil{
-		logging.Error("Create {{modelName}} copy", err)
-		app.RespJson(c, e.ERROR, nil)
-	}
-	if err := util.StructCopy(&{{modelName}}, &req); err != nil{
-		logging.Error("Create {{modelName}} copy", err)
-		app.RespJson(c, e.ERROR, nil)
-	}
-
-	err := {{modelName}}.Update()
-	if err != nil {
-		logging.Error("Put {{ModelName}}", err)
-		app.RespJson(c, e.ERROR, nil)
-		return
-	}
-
-	app.RespJson(c, e.SUCCESS, nil)
-}
+//// @Summary Put
+//// @Tags    {{ModelName}}
+//// @Param body body controller.put{{ModelName}} true "put{{modelName}}"
+//// @Param  {{modelName}}Id path string true "{{modelName}}Id"
+//// @Success 200 {string} json ""
+//// @Router /{{modelName}}s/{{{modelName}}Id} [put]
+//func (ctl *{{ModelName}}Controller) Put(c *gin.Context) {
+//	{{modelName}} := model.{{ModelName}}{}
+//	{{modelName}}.Id = c.Param("{{modelName}}Id")
+//	req := put{{ModelName}}{} 
+//
+//	if err := pkg.ParseRequest(c, &req); err != nil {
+//		return
+//	}
+//
+//	if err := util.StructCopy(&{{modelName}}, &req); err != nil{
+//		logging.Error("Create {{modelName}} copy", err)
+//		app.RespJson(c, e.ERROR, nil)
+//	}
+//	if err := util.StructCopy(&{{modelName}}, &req); err != nil{
+//		logging.Error("Create {{modelName}} copy", err)
+//		app.RespJson(c, e.ERROR, nil)
+//	}
+//
+//	err := {{modelName}}.Update()
+//	if err != nil {
+//		logging.Error("Put {{ModelName}}", err)
+//		app.RespJson(c, e.ERROR, nil)
+//		return
+//	}
+//
+//	app.RespJson(c, e.SUCCESS, nil)
+//}
 
 // @Summary Patch
 // @Tags    {{ModelName}}
