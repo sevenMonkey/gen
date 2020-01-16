@@ -113,11 +113,10 @@ func ({{modelName}} *{{ModelName}}) List(rawQuery string, rawOrder string, offse
 	if err != nil {
 		return &{{modelName}}s, total, err
 	}
-
+	db.Count(&total)
 	db.Offset(offset).
 		Limit(limit).
-		Find(&{{modelName}}s).
-		Count(&total)
+		Find(&{{modelName}}s)
 
 	err = db.Error
 	if err == gorm.ErrRecordNotFound{
@@ -127,12 +126,16 @@ func ({{modelName}} *{{ModelName}}) List(rawQuery string, rawOrder string, offse
 	return &{{modelName}}s, total, err
 }
 
-func ({{modelName}} *{{ModelName}}) Get() (*{{ModelName}}, error) {
-	err := app.DB.Find(&{{modelName}}).Error
-	if err == gorm.ErrRecordNotFound{
-		return {{modelName}}, nil 
+func ({{modelName}} *{{ModelName}}) Get() (bool, error) {
+	err := app.DB.Take(&{{modelName}}).Error
+	switch err {
+	case gorm.ErrRecordNotFound:
+		return false, nil
+	case nil:
+		return true, nil
+	default:
+		return false, err
 	}
-	return {{modelName}}, err
 }
 
 `

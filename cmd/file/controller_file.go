@@ -178,7 +178,10 @@ func (ctl *{{ModelName}}Controller) Patch(c *gin.Context) {
 func (ctl *{{ModelName}}Controller) List(c *gin.Context) {
 	{{modelName}} := &model.{{ModelName}}{}
 	{{modelName}}.Id = c.Param("{{modelName}}Id")
-	var err error
+	var (
+		err error
+		offset, limit int
+	)
 
 	pageParam := c.DefaultQuery("page", "-1")
 	pageSizeParam := c.DefaultQuery("pageSize", "-1")
@@ -188,11 +191,11 @@ func (ctl *{{ModelName}}Controller) List(c *gin.Context) {
 	pageInt, err := strconv.Atoi(pageParam)
 	pageSizeInt, err := strconv.Atoi(pageSizeParam)
 
-	offset := pageInt*pageSizeInt - pageSizeInt
-	limit := pageSizeInt
-
 	if pageInt < 0 || pageSizeInt < 0 {
-		limit = -1
+		limit = DefaultPageSizeLimit
+	}else{
+		offset = pageInt*pageSizeInt - pageSizeInt
+		limit = pageSizeInt
 	}
 
 	{{modelName}}s, total, err := {{modelName}}.List(rawQuery, rawOrder, offset, limit)
